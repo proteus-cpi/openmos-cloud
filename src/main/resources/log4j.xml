@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/' debug="true">
+	<appender name="openMosWP4LogFile" class="org.apache.log4j.DailyRollingFileAppender">
+       	<param name="File" value="${DD_OPENMOS_LOGPATH}/OpenMOSCloudPlatform.log" />
+       	<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d | %-5p | %m%n"/>
+		</layout>
+	</appender>
+
+	<appender name="openMosWP4Console" class="org.apache.log4j.ConsoleAppender">
+	  	<param name="Target" value="System.out"/>
+		<layout class="org.apache.log4j.PatternLayout">
+	    	<param name="ConversionPattern" value="%d | %-5p | %m%n"/>
+	  	</layout>
+	</appender>
+
+   <!-- ============================ -->
+   <!-- CATEGORIES -->
+   <!-- ============================ -->
+  <category name="io.vertx" additivity="false">
+    <priority value="${DD_OPENMOS_LOG_PRIORITY}" />
+    <appender-ref ref="openMosWP4LogFile" />
+    <appender-ref ref="openMosWP4Console" />
+  </category>
+  
+  <category name="eu.openmos.agentcloud" additivity="false">
+    <priority value="${DD_OPENMOS_LOG_PRIORITY}" />
+    <appender-ref ref="openMosWP4LogFile" />
+    <appender-ref ref="openMosWP4Console" />
+  </category>
+
+   <root>
+        <priority value="INFO"/>
+        <appender-ref ref="openMosWP4LogFile"/>
+        <appender-ref ref="openMosWP4Console" />
+    </root>
+</log4j:configuration>

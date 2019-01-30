@@ -1,0 +1,258 @@
+<wsdl:definitions name="EventConfirmation" targetNamespace="http://soap.services.msb.openmos.eu/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://soap.services.msb.openmos.eu/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://soap.services.msb.openmos.eu/" version="1.0" xmlns:tns="http://soap.services.msb.openmos.eu/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="agentCreated" type="tns:agentCreated" />
+<xs:element name="agentCreatedResponse" type="tns:agentCreatedResponse" />
+<xs:element name="agentNotCreated" type="tns:agentNotCreated" />
+<xs:element name="agentNotCreatedResponse" type="tns:agentNotCreatedResponse" />
+<xs:element name="agentNotRemoved" type="tns:agentNotRemoved" />
+<xs:element name="agentNotRemovedResponse" type="tns:agentNotRemovedResponse" />
+<xs:element name="agentRemoved" type="tns:agentRemoved" />
+<xs:element name="agentRemovedResponse" type="tns:agentRemovedResponse" />
+<xs:element name="cloudActive" type="tns:cloudActive" />
+<xs:element name="cloudActiveResponse" type="tns:cloudActiveResponse" />
+<xs:element name="orderInstanceCreated" type="tns:orderInstanceCreated" />
+<xs:element name="orderInstanceCreatedResponse" type="tns:orderInstanceCreatedResponse" />
+<xs:element name="orderInstanceNotCreated" type="tns:orderInstanceNotCreated" />
+<xs:element name="orderInstanceNotCreatedResponse" type="tns:orderInstanceNotCreatedResponse" />
+<xs:complexType name="orderInstanceNotCreated">
+<xs:sequence>
+<xs:element minOccurs="0" name="orderId" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="orderInstanceNotCreatedResponse">
+<xs:sequence>
+<xs:element name="confirmationReceived" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="agentNotCreated">
+<xs:sequence>
+<xs:element minOccurs="0" name="agentId" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="agentNotCreatedResponse">
+<xs:sequence>
+<xs:element name="confirmationReceived" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="agentNotRemoved">
+<xs:sequence>
+<xs:element minOccurs="0" name="agentId" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="agentNotRemovedResponse">
+<xs:sequence>
+<xs:element name="confirmationReceived" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="cloudActive">
+<xs:sequence />
+</xs:complexType>
+<xs:complexType name="cloudActiveResponse">
+<xs:sequence />
+</xs:complexType>
+<xs:complexType name="orderInstanceCreated">
+<xs:sequence>
+<xs:element minOccurs="0" name="orderId" type="xs:string" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="agentIds" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="orderInstanceCreatedResponse">
+<xs:sequence>
+<xs:element name="confirmationReceived" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="agentRemoved">
+<xs:sequence>
+<xs:element minOccurs="0" name="agentId" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="agentRemovedResponse">
+<xs:sequence>
+<xs:element name="confirmationReceived" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="agentCreated">
+<xs:sequence>
+<xs:element minOccurs="0" name="agentId" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="agentCreatedResponse">
+<xs:sequence>
+<xs:element name="confirmationReceived" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="agentCreatedResponse">
+    <wsdl:part element="tns:agentCreatedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="agentNotCreated">
+    <wsdl:part element="tns:agentNotCreated" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="agentNotRemoved">
+    <wsdl:part element="tns:agentNotRemoved" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cloudActive">
+    <wsdl:part element="tns:cloudActive" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="orderInstanceCreatedResponse">
+    <wsdl:part element="tns:orderInstanceCreatedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="agentNotRemovedResponse">
+    <wsdl:part element="tns:agentNotRemovedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="agentRemovedResponse">
+    <wsdl:part element="tns:agentRemovedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="agentRemoved">
+    <wsdl:part element="tns:agentRemoved" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cloudActiveResponse">
+    <wsdl:part element="tns:cloudActiveResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="orderInstanceNotCreated">
+    <wsdl:part element="tns:orderInstanceNotCreated" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="orderInstanceCreated">
+    <wsdl:part element="tns:orderInstanceCreated" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="orderInstanceNotCreatedResponse">
+    <wsdl:part element="tns:orderInstanceNotCreatedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="agentNotCreatedResponse">
+    <wsdl:part element="tns:agentNotCreatedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="agentCreated">
+    <wsdl:part element="tns:agentCreated" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EventConfirmation">
+    <wsdl:operation name="orderInstanceNotCreated">
+      <wsdl:input message="tns:orderInstanceNotCreated" name="orderInstanceNotCreated">
+    </wsdl:input>
+      <wsdl:output message="tns:orderInstanceNotCreatedResponse" name="orderInstanceNotCreatedResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agentNotCreated">
+      <wsdl:input message="tns:agentNotCreated" name="agentNotCreated">
+    </wsdl:input>
+      <wsdl:output message="tns:agentNotCreatedResponse" name="agentNotCreatedResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agentNotRemoved">
+      <wsdl:input message="tns:agentNotRemoved" name="agentNotRemoved">
+    </wsdl:input>
+      <wsdl:output message="tns:agentNotRemovedResponse" name="agentNotRemovedResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cloudActive">
+      <wsdl:input message="tns:cloudActive" name="cloudActive">
+    </wsdl:input>
+      <wsdl:output message="tns:cloudActiveResponse" name="cloudActiveResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="orderInstanceCreated">
+      <wsdl:input message="tns:orderInstanceCreated" name="orderInstanceCreated">
+    </wsdl:input>
+      <wsdl:output message="tns:orderInstanceCreatedResponse" name="orderInstanceCreatedResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agentRemoved">
+      <wsdl:input message="tns:agentRemoved" name="agentRemoved">
+    </wsdl:input>
+      <wsdl:output message="tns:agentRemovedResponse" name="agentRemovedResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agentCreated">
+      <wsdl:input message="tns:agentCreated" name="agentCreated">
+    </wsdl:input>
+      <wsdl:output message="tns:agentCreatedResponse" name="agentCreatedResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EventConfirmationSoapBinding" type="tns:EventConfirmation">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="orderInstanceNotCreated">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="orderInstanceNotCreated">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="orderInstanceNotCreatedResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agentNotCreated">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="agentNotCreated">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="agentNotCreatedResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agentNotRemoved">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="agentNotRemoved">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="agentNotRemovedResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cloudActive">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="cloudActive">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="cloudActiveResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="orderInstanceCreated">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="orderInstanceCreated">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="orderInstanceCreatedResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agentRemoved">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="agentRemoved">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="agentRemovedResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agentCreated">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="agentCreated">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="agentCreatedResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EventConfirmation">
+    <wsdl:port binding="tns:EventConfirmationSoapBinding" name="EventConfirmationImplPort">
+      <soap:address location="http://0.0.0.0:9997/wsEventConfirmation" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

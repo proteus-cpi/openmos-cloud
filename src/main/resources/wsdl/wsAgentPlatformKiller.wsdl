@@ -1,0 +1,49 @@
+<wsdl:definitions name="AgentPlatformKiller" targetNamespace="http://cloudinterface.agentcloud.openmos.eu/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://cloudinterface.agentcloud.openmos.eu/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://cloudinterface.agentcloud.openmos.eu/" version="1.0" xmlns:tns="http://cloudinterface.agentcloud.openmos.eu/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="shutdown" type="tns:shutdown" />
+<xs:element name="shutdownResponse" type="tns:shutdownResponse" />
+<xs:complexType name="shutdown">
+<xs:sequence />
+</xs:complexType>
+<xs:complexType name="shutdownResponse">
+<xs:sequence>
+<xs:element name="shutdownStatus" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="shutdown">
+    <wsdl:part element="tns:shutdown" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="shutdownResponse">
+    <wsdl:part element="tns:shutdownResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AgentPlatformKiller">
+    <wsdl:operation name="shutdown">
+      <wsdl:input message="tns:shutdown" name="shutdown">
+    </wsdl:input>
+      <wsdl:output message="tns:shutdownResponse" name="shutdownResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AgentPlatformKillerSoapBinding" type="tns:AgentPlatformKiller">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="shutdown">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="shutdown">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="shutdownResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AgentPlatformKiller">
+    <wsdl:port binding="tns:AgentPlatformKillerSoapBinding" name="AgentPlatformKillerImplPort">
+      <soap:address location="http://0.0.0.0:9999/wsAgentPlatformKiller" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

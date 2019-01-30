@@ -1,0 +1,320 @@
+<wsdl:definitions name="RecipesDeployment" targetNamespace="http://soap.services.msb.openmos.eu/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://soap.services.msb.openmos.eu/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://soap.services.msb.openmos.eu/" version="1.0" xmlns:tns="http://soap.services.msb.openmos.eu/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="updateExecutionTable" type="tns:updateExecutionTable" />
+<xs:element name="updateExecutionTableResponse" type="tns:updateExecutionTableResponse" />
+<xs:element name="updateRecipes" type="tns:updateRecipes" />
+<xs:element name="updateRecipesResponse" type="tns:updateRecipesResponse" />
+<xs:complexType name="updateExecutionTable">
+<xs:sequence>
+<xs:element minOccurs="0" name="executionTable" type="tns:executionTable" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="executionTable">
+<xs:complexContent>
+<xs:extension base="tns:base">
+<xs:sequence>
+<xs:element minOccurs="0" name="description" type="xs:string" />
+<xs:element minOccurs="0" name="name" type="xs:string" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="rows" nillable="true" type="tns:executionTableRow" />
+<xs:element minOccurs="0" name="uniqueId" type="xs:string" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType abstract="true" name="base">
+<xs:sequence>
+<xs:element minOccurs="0" name="registered" type="xs:dateTime" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="executionTableRow">
+<xs:complexContent>
+<xs:extension base="tns:base">
+<xs:sequence>
+<xs:element minOccurs="0" name="nextRecipeId" type="xs:string" />
+<xs:element minOccurs="0" name="nextRecipeIdPath" type="xs:string" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="possibleRecipeChoices" nillable="true" type="xs:string" />
+<xs:element minOccurs="0" name="productId" type="xs:string" />
+<xs:element minOccurs="0" name="recipeId" type="xs:string" />
+<xs:element minOccurs="0" name="uniqueId" type="xs:string" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="updateExecutionTableResponse">
+<xs:sequence>
+<xs:element name="executionTableDeploymentStatus" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateRecipes">
+<xs:sequence>
+<xs:element minOccurs="0" name="deviceName" type="xs:string" />
+<xs:element name="mode" type="xs:int" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="recipes" type="tns:recipe" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="recipe">
+<xs:complexContent>
+<xs:extension base="tns:base">
+<xs:sequence>
+<xs:element minOccurs="0" name="changeRecipeMethodID" type="xs:string" />
+<xs:element minOccurs="0" name="changeRecipeObjectID" type="xs:string" />
+<xs:element minOccurs="0" name="description" type="xs:string" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="equipmentIds" nillable="true" type="xs:string" />
+<xs:element minOccurs="0" name="executedBySkillControlPort" type="tns:controlPort" />
+<xs:element minOccurs="0" name="invokeMethodID" type="xs:string" />
+<xs:element minOccurs="0" name="invokeObjectID" type="xs:string" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="kpiSettings" nillable="true" type="tns:kpiSetting" />
+<xs:element minOccurs="0" name="lastOptimizationTime" type="xs:dateTime" />
+<xs:element minOccurs="0" name="msbProtocolEndpoint" type="xs:string" />
+<xs:element minOccurs="0" name="name" type="xs:string" />
+<xs:element name="optimized" type="xs:boolean" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="parameterSettings" nillable="true" type="tns:parameterSetting" />
+<xs:element minOccurs="0" name="skill" type="tns:skill" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="skillRequirements" nillable="true" type="tns:skillRequirement" />
+<xs:element minOccurs="0" name="state" type="xs:string" />
+<xs:element minOccurs="0" name="statePath" type="xs:string" />
+<xs:element minOccurs="0" name="uniqueAgentName" type="xs:string" />
+<xs:element minOccurs="0" name="uniqueId" type="xs:string" />
+<xs:element name="valid" type="xs:boolean" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="controlPort">
+<xs:complexContent>
+<xs:extension base="tns:port">
+<xs:sequence />
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType abstract="true" name="port">
+<xs:complexContent>
+<xs:extension base="tns:base">
+<xs:sequence>
+<xs:element minOccurs="0" name="description" type="xs:string" />
+<xs:element minOccurs="0" name="direction" type="xs:string" />
+<xs:element minOccurs="0" name="name" type="xs:string" />
+<xs:element minOccurs="0" name="type" type="xs:string" />
+<xs:element minOccurs="0" name="uniqueId" type="xs:string" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="kpiSetting">
+<xs:complexContent>
+<xs:extension base="tns:base">
+<xs:sequence>
+<xs:element minOccurs="0" name="description" type="xs:string" />
+<xs:element minOccurs="0" name="kpi" type="tns:kpi" />
+<xs:element minOccurs="0" name="name" type="xs:string" />
+<xs:element minOccurs="0" name="path" type="xs:string" />
+<xs:element minOccurs="0" name="type" type="xs:string" />
+<xs:element minOccurs="0" name="uniqueId" type="xs:string" />
+<xs:element minOccurs="0" name="unit" type="xs:string" />
+<xs:element minOccurs="0" name="value" type="xs:string" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="kpi">
+<xs:complexContent>
+<xs:extension base="tns:base">
+<xs:sequence>
+<xs:element minOccurs="0" name="defaultLowerBound" type="xs:string" />
+<xs:element minOccurs="0" name="defaultUpperBound" type="xs:string" />
+<xs:element minOccurs="0" name="description" type="xs:string" />
+<xs:element minOccurs="0" name="name" type="xs:string" />
+<xs:element minOccurs="0" name="type" type="xs:string" />
+<xs:element minOccurs="0" name="uniqueId" type="xs:string" />
+<xs:element minOccurs="0" name="unit" type="xs:string" />
+<xs:element minOccurs="0" name="value" type="xs:string" />
+<xs:element minOccurs="0" name="valueType" type="xs:string" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="parameterSetting">
+<xs:complexContent>
+<xs:extension base="tns:base">
+<xs:sequence>
+<xs:element minOccurs="0" name="description" type="xs:string" />
+<xs:element minOccurs="0" name="name" type="xs:string" />
+<xs:element minOccurs="0" name="parameter" type="tns:parameter" />
+<xs:element minOccurs="0" name="uniqueId" type="xs:string" />
+<xs:element minOccurs="0" name="value" type="xs:string" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="parameter">
+<xs:complexContent>
+<xs:extension base="tns:base">
+<xs:sequence>
+<xs:element minOccurs="0" name="defaultValue" type="xs:string" />
+<xs:element minOccurs="0" name="description" type="xs:string" />
+<xs:element minOccurs="0" name="lowerBound" type="xs:string" />
+<xs:element minOccurs="0" name="name" type="xs:string" />
+<xs:element minOccurs="0" name="type" type="xs:string" />
+<xs:element minOccurs="0" name="uniqueId" type="xs:string" />
+<xs:element minOccurs="0" name="unit" type="xs:string" />
+<xs:element minOccurs="0" name="upperBound" type="xs:string" />
+<xs:element minOccurs="0" name="valueType" type="xs:string" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="skill">
+<xs:complexContent>
+<xs:extension base="tns:base">
+<xs:sequence>
+<xs:element name="classificationType" type="xs:int" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="controlPorts" nillable="true" type="tns:controlPort" />
+<xs:element minOccurs="0" name="description" type="xs:string" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="informationPorts" nillable="true" type="tns:informationPort" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="kpis" nillable="true" type="tns:kpi" />
+<xs:element minOccurs="0" name="label" type="xs:string" />
+<xs:element minOccurs="0" name="name" type="xs:string" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="parameterPorts" nillable="true" type="tns:parameterPort" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="parameters" nillable="true" type="tns:parameter" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="recipeIds" nillable="true" type="xs:string" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="skillRequirements" nillable="true" type="tns:skillRequirement" />
+<xs:element minOccurs="0" name="skillType" type="tns:skillType" />
+<xs:element minOccurs="0" name="subSystemId" type="xs:string" />
+<xs:element minOccurs="0" name="type" type="xs:string" />
+<xs:element minOccurs="0" name="uniqueId" type="xs:string" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="informationPort">
+<xs:complexContent>
+<xs:extension base="tns:port">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="kpis" nillable="true" type="tns:kpi" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="parameterPort">
+<xs:complexContent>
+<xs:extension base="tns:port">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="parameters" nillable="true" type="tns:parameter" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="skillRequirement">
+<xs:complexContent>
+<xs:extension base="tns:base">
+<xs:sequence>
+<xs:element minOccurs="0" name="description" type="xs:string" />
+<xs:element minOccurs="0" name="name" type="xs:string" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="precedents" nillable="true" type="tns:skillReqPrecedent" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="recipeIDs" nillable="true" type="xs:string" />
+<xs:element minOccurs="0" name="requiresPart" type="tns:part" />
+<xs:element minOccurs="0" name="skillType" type="tns:skillType" />
+<xs:element minOccurs="0" name="type" type="xs:string" />
+<xs:element minOccurs="0" name="uniqueId" type="xs:string" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="skillReqPrecedent">
+<xs:complexContent>
+<xs:extension base="tns:base">
+<xs:sequence>
+<xs:element minOccurs="0" name="name" type="xs:string" />
+<xs:element minOccurs="0" name="uniqueId" type="xs:string" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="part">
+<xs:complexContent>
+<xs:extension base="tns:base">
+<xs:sequence>
+<xs:element minOccurs="0" name="description" type="xs:string" />
+<xs:element minOccurs="0" name="name" type="xs:string" />
+<xs:element minOccurs="0" name="uniqueId" type="xs:string" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="skillType">
+<xs:complexContent>
+<xs:extension base="tns:base">
+<xs:sequence>
+<xs:element name="decision" type="xs:boolean" />
+<xs:element minOccurs="0" name="description" type="xs:string" />
+<xs:element minOccurs="0" name="name" type="xs:string" />
+<xs:element minOccurs="0" name="uniqueId" type="xs:string" />
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="updateRecipesResponse">
+<xs:sequence>
+<xs:element name="recipesDeploymentStatus" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="updateExecutionTable">
+    <wsdl:part element="tns:updateExecutionTable" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateExecutionTableResponse">
+    <wsdl:part element="tns:updateExecutionTableResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateRecipes">
+    <wsdl:part element="tns:updateRecipes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateRecipesResponse">
+    <wsdl:part element="tns:updateRecipesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="RecipesDeployment">
+    <wsdl:operation name="updateExecutionTable">
+      <wsdl:input message="tns:updateExecutionTable" name="updateExecutionTable">
+    </wsdl:input>
+      <wsdl:output message="tns:updateExecutionTableResponse" name="updateExecutionTableResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRecipes">
+      <wsdl:input message="tns:updateRecipes" name="updateRecipes">
+    </wsdl:input>
+      <wsdl:output message="tns:updateRecipesResponse" name="updateRecipesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RecipesDeploymentSoapBinding" type="tns:RecipesDeployment">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="updateExecutionTable">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updateExecutionTable">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateExecutionTableResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRecipes">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="updateRecipes">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateRecipesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RecipesDeployment">
+    <wsdl:port binding="tns:RecipesDeploymentSoapBinding" name="RecipesDeploymentImplPort">
+      <soap:address location="http://0.0.0.0:9997/wsRecipesDeployment" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>eu.openmos</groupId>
+    <artifactId>openMOSCloudPlatform</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <vertx.version>3.4.2</vertx.version>
+<!-- VaG - 14/06/2017 - start -->
+        <!-- flink.version>1.1.2</flink.version --> 
+        <tool.wsgen>${java.home}/../bin/wsgen.exe</tool.wsgen>
+        <tool.wsimport>${java.home}/../bin/wsimport.exe</tool.wsimport>        
+    </properties>
+    <repositories>
+        <repository>
+            <id>local-repo</id>
+            <name>Local repository</name>
+            <url>file:${project.basedir}/repo</url>
+        </repository> 
+        <repository> 
+            <id>tilab</id> 
+            <url>http://jade.tilab.com/maven/</url> 
+        </repository>
+        <repository>
+            <id>maven-restlet</id>
+            <name>Public online Restlet repository</name>
+            <url>http://maven.restlet.com</url>
+        </repository> 
+    </repositories>
+    <dependencies>
+        <dependency>  
+            <groupId>com.tilab.jade</groupId> 
+            <artifactId>jade</artifactId> 
+            <version>4.4.0</version>  
+        </dependency>
+        <!-- dependency>
+            <groupId>eu.openmos</groupId>
+            <artifactId>openMOSAgentDataServices</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>eu.openmos</groupId>
+            <artifactId>openMOSDataCloudServices</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency -->        
+        <!-- dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
+            <version>3.3.3</version>
+            <type>jar</type>
+        </dependency>
+<dependency>
+  <groupId>io.vertx</groupId>
+  <artifactId>vertx-hazelcast</artifactId>
+  <version>3.3.3</version>
+</dependency -->        
+<dependency>
+  <groupId>io.vertx</groupId>
+  <artifactId>vertx-core</artifactId>
+  <!-- version>3.3.3</version -->
+  <version>${vertx.version}</version>
+</dependency>        
+<dependency>
+  <groupId>io.vertx</groupId>
+  <artifactId>vertx-hazelcast</artifactId>
+  <!-- version>3.3.3</version -->
+  <version>${vertx.version}</version>
+</dependency>        
+        <dependency>
+            <groupId>org.restlet.jse</groupId>
+            <artifactId>org.restlet</artifactId>
+            <version>2.2-RC4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.restlet.jse</groupId>
+            <artifactId>org.restlet.ext.simple</artifactId>
+            <version>2.2-RC4</version>
+        </dependency>
+        <!-- BEGIN optimizer dependencies -->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-async</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver</artifactId>
+            <version>3.3.0</version>
+            <type>jar</type>
+        </dependency>
+        <!-- dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-java</artifactId>
+            <version>${flink.version}</version>
+        </dependency>        
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-streaming-java_2.10</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-kafka-0.9_2.10</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-async</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka_2.10</artifactId>
+            <version>0.9.0.1</version>
+            <type>jar</type>
+        </dependency -->
+        <!-- END optimizer dependencies -->
+        <!-- BEGIN openmos dependencies -->
+<!-- dependency>
+    <groupId>eu.openmos</groupId>
+    <artifactId>org.opcfoundation.ua</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+<dependency>
+    <groupId>eu.openmos</groupId>
+    <artifactId>nddsjava</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency -->
+<dependency>
+    <groupId>org.bouncycastle</groupId>
+    <artifactId>bcpkix-jdk15on</artifactId>
+    <version>1.52</version>
+</dependency>
+<dependency>
+    <groupId>org.bouncycastle</groupId>
+    <artifactId>bcprov-jdk15on</artifactId>
+    <version>1.52</version>
+</dependency>
+<dependency>
+    <groupId>commons-logging</groupId>
+    <artifactId>commons-logging</artifactId>
+    <version>1.2</version>
+</dependency>
+<dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.16</version>
+</dependency>
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.7</version>
+</dependency>
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-log4j12</artifactId>
+    <version>1.7.7</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.4.1</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpcore</artifactId>
+    <version>4.4.1</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpcore-nio</artifactId>
+    <version>4.4.1</version>
+</dependency>        
+<dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>2.2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-ws-security</artifactId>
+            <version>2.2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ws.security</groupId>
+            <artifactId>wss4j</artifactId>
+            <version>1.5.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http-jetty</artifactId>
+            <version>2.2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>bson</artifactId>
+            <version>3.3.0</version>
+            <type>jar</type>
+        </dependency >
+        <!-- dependency>
+            <groupId>eu.openmos</groupId>
+            <artifactId>openMOSEnergyOptimizer</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>runtime</scope>
+            <type>jar</type>
+        </dependency -->        
+        <!-- jax-rs test -->
+<dependency>
+    <groupId>org.glassfish.jersey.core</groupId>
+    <artifactId>jersey-server</artifactId>
+    <version>2.4</version>
+</dependency>
+<dependency>
+    <groupId>org.glassfish.jersey.containers</groupId>
+    <artifactId>jersey-container-jdk-http</artifactId>
+    <version>2.4</version>
+</dependency>
+<dependency>
+    <groupId>com.fasterxml.jackson.jaxrs</groupId>
+    <artifactId>jackson-jaxrs-json-provider</artifactId>
+    <version>2.9.0</version>
+</dependency>
+    </dependencies>
+        <!-- VaG - 12/12/2016 - begin -->
+        <build>
+        <plugins>
+<plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jaxws-maven-plugin</artifactId>
+        <version>2.4.1</version>
+        <executions>
+          <!-- execution>
+            <id>wsgen-from-jdk</id>
+            <goals>
+              <goal>wsgen</goal>
+            </goals>
+            <configuration>
+              <executable>${tool.wsgen}</executable>
+              <sei>com.mycompany.MyService</sei>
+              ...
+            </configuration>
+          </execution -->
+          <execution>
+<!-- 
+"%JAVA_HOME%"\bin\wsimport 
+              -s src/main/java 
+              -p eu.openmos.msb.ws.recipesdeployment.wsimport  
+              -b c:\temp\wsRecipesDeployment.xjb   
+              http://localhost:9997/wsRecipesDeployment?wsdl
+-->              
+            <id>wsimport-from-jdk-wsRecipesDeployment</id>
+            <goals>
+              <goal>wsimport</goal>
+            </goals>
+            <configuration>
+              <executable>${tool.wsimport}</executable>
+              <encoding>${project.build.sourceEncoding}</encoding>
+              <args>
+                    <arg>-encoding UTF-8</arg>
+                </args>
+              <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
+              <packageName>eu.openmos.msb.ws.recipesdeployment.wsimport</packageName>
+              <bindingDirectory>${basedir}/src/main/jaxws</bindingDirectory>
+              <bindingFiles>
+                    <bindingFile>wsRecipesDeployment.xjb</bindingFile>
+              </bindingFiles>
+              <wsdlLocation>/wsdl/wsRecipesDeployment.wsdl</wsdlLocation>
+              <!-- wsdlDirectory>${basedir}/src/main/wsdl</wsdlDirectory -->
+              <wsdlFiles>
+                <wsdlFile>${basedir}/src/main/resources/wsdl/wsRecipesDeployment.wsdl</wsdlFile>
+              </wsdlFiles>
+            </configuration>
+          </execution>          
+          <execution>
+<!-- 
+"%JAVA_HOME%"\bin\wsimport 
+              -s src/main/java 
+              -p eu.openmos.msb.ws.eventconfirmation.wsimport  
+              -b c:\temp\wsEventConfirmation.xjb   
+              http://localhost:9997/wsEventConfirmation?wsdl
+-->              
+            <id>wsimport-from-jdk-wsEventConfirmation</id>
+            <goals>
+              <goal>wsimport</goal>
+            </goals>
+            <configuration>
+              <executable>${tool.wsimport}</executable>
+              <encoding>${project.build.sourceEncoding}</encoding>
+              <args>
+                    <arg>-encoding UTF-8</arg>
+                </args>
+              <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
+              <packageName>eu.openmos.msb.ws.eventconfirmation.wsimport</packageName>
+              <bindingDirectory>${basedir}/src/main/jaxws</bindingDirectory>
+              <bindingFiles>
+                    <bindingFile>wsEventConfirmation.xjb</bindingFile>
+              </bindingFiles>
+              <wsdlLocation>/wsdl/wsEventConfirmation.wsdl</wsdlLocation>
+              <!-- wsdlDirectory>${basedir}/src/main/wsdl</wsdlDirectory -->
+              <wsdlFiles>
+                <wsdlFile>${basedir}/src/main/resources/wsdl/wsEventConfirmation.wsdl</wsdlFile>
+              </wsdlFiles>
+            </configuration>
+          </execution>          
+          <execution>
+<!-- 
+"%JAVA_HOME%"\bin\wsimport 
+      -s src/main/java 
+      -p eu.openmos.agentcloud.ws.agentplatformkiller.wsimport  
+      http://localhost:9999/wsAgentPlatformKiller?wsdl            
+            
+-->              
+            <id>wsimport-from-jdk-wsAgentPlatformKiller</id>
+            <goals>
+              <goal>wsimport</goal>
+            </goals>
+            <configuration>
+              <executable>${tool.wsimport}</executable>
+              <encoding>${project.build.sourceEncoding}</encoding>
+              <args>
+                    <arg>-encoding UTF-8</arg>
+                </args>
+              <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
+              <packageName>eu.openmos.agentcloud.ws.agentplatformkiller.wsimport</packageName>
+              <!-- bindingDirectory>${basedir}/src/main/jaxws</bindingDirectory>
+              <bindingFiles>
+                    <bindingFile>wsAgentPlatformKiller.xjb</bindingFile>
+              </bindingFiles -->
+              <wsdlLocation>/wsdl/wsAgentPlatformKiller.wsdl</wsdlLocation>
+              <!-- wsdlDirectory>${basedir}/src/main/wsdl</wsdlDirectory -->
+              <wsdlFiles>
+                <wsdlFile>${basedir}/src/main/resources/wsdl/wsAgentPlatformKiller.wsdl</wsdlFile>
+              </wsdlFiles>
+            </configuration>
+          </execution>          
+        </executions>
+      </plugin>
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-jar-plugin</artifactId>
+  <version>2.3</version>
+  <configuration>
+    <excludes>
+      <!-- exclude>**/*.properties</exclude -->
+      <exclude>**/default.properties</exclude>
+      <exclude>**/log4j.xml</exclude>
+    </excludes>  
+    <archive>
+      <manifest>
+        <addClasspath>true</addClasspath>
+        <classpathPrefix>lib/</classpathPrefix>
+        <mainClass>eu.openmos.agentplatformstarter.Starter</mainClass>
+      </manifest>
+      <manifestEntries>
+        <Class-Path>conf/</Class-Path>
+      </manifestEntries>
+    </archive>
+  </configuration>
+</plugin>
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-resources-plugin</artifactId>
+  <version>2.3</version>
+  <executions>
+    <execution>
+      <id>copy-resources</id>
+      <phase>install</phase>
+      <goals>
+        <goal>copy-resources</goal>
+      </goals>
+      <configuration>
+        <outputDirectory>${basedir}/target/conf</outputDirectory>
+        <resources>
+          <resource>
+            <directory>src/main/resources</directory>
+            <includes>
+              <include>**/default.properties</include>
+              <include>**/log4j.xml</include>
+            </includes>
+          </resource>
+        </resources>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
+<plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+            <outputDirectory>assembly</outputDirectory>
+          <!-- filters>
+            <filter>src/assembly/filter.properties</filter>
+          </filters -->
+          <descriptors>
+            <!-- descriptor>src/assembly/distribution.xml</descriptor -->
+            <descriptor>src/main/assembly/distribution.xml</descriptor>
+          </descriptors>
+        </configuration>
+      </plugin>        
+      </plugins>
+        </build>
+        <!-- VaG - 12/12/2016 - end -->        
+<!-- VaG - 14/06/2017 - end -->    
+</project>
